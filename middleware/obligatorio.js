@@ -1,9 +1,12 @@
-export function verificarMensaje(funcionInsertar) {
+import { insertarMensaje } from '../model/messageModel';
+import { insertarUsuario } from '../model/userModel';
+
+export function verificarMensaje() {
     return async (req, res, next) => {
         const { title, body, user_id } = req.body;
 
         try {
-            const nuevoMensaje = await funcionInsertar(title, body, user_id);
+            const nuevoMensaje = await insertarMensaje(title, body, user_id);
 
             req.mensaje = nuevoMensaje;
 
@@ -15,12 +18,12 @@ export function verificarMensaje(funcionInsertar) {
     };
 }
 
-export function verificarUser(funcionInsertar) {
+export function verificarUser() {
     return async (req, res, next) => {
         const { first_name, last_name, username, password_hash } = req.body;
 
         try {
-            const nuevoUsuario = await funcionInsertar(
+            const nuevoUsuario = await insertarUsuario(
                 first_name,
                 last_name,
                 username,
