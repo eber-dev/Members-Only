@@ -34,3 +34,5 @@ rutasmensaje.put(
 );
 
 rutasmensaje.put('/:id', validateId, verificarExistenciaMensaje, deleteMessage);
+
+export default rutasmensaje;
