@@ -1,0 +1,13 @@
+<nav>
+    <div class="logo">🔒 Members Only</div>
+    <ul>
+        <% if (typeof currentUser !== 'undefined' && currentUser) { %>
+        <li><a href="/">Inicio</a></li>
+        <li><span class="user-info">👤 <%= currentUser.username %></span></li>
+        <li><a href="/auth/logout">Cerrar sesión</a></li>
+        <% } else { %>
+        <li><a href="/auth/login">Iniciar sesión</a></li>
+        <li><a href="/auth/register">Registrarse</a></li>
+        <% } %>
+    </ul>
+</nav>

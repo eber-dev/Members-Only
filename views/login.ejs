@@ -1,0 +1,45 @@
+<%- include('partials/head', { title: 'Iniciar sesión' }) %>
+<%- include('partials/nav') %>
+
+<div class="container">
+    <div class="card">
+        <h1>Bienvenido de vuelta</h1>
+        <p class="subtitle">Ingresa tus credenciales</p>
+
+        <% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+        <div class="alert alert-error">
+            <ul>
+                <% errors.forEach(function(error) { %>
+                <li><%= error.msg %></li>
+                <% }) %>
+            </ul>
+        </div>
+        <% } %>
+
+        <form action="/auth/login" method="POST">
+            <div class="form-group">
+                <label for="username">Nombre de usuario</label>
+                <input
+                    type="text"
+                    id="username"
+                    name="username"
+                    value="<%= typeof old !== 'undefined' && old.username ? old.username : '' %>"
+                    required
+                />
+            </div>
+
+            <div class="form-group">
+                <label for="password">Contraseña</label>
+                <input type="password" id="password" name="password" required />
+            </div>
+
+            <button type="submit" class="btn">Iniciar sesión</button>
+        </form>
+
+        <div class="card-footer">
+            ¿No tienes cuenta? <a href="/auth/register">Regístrate</a>
+        </div>
+    </div>
+</div>
+
+<%- include('partials/footer') %>

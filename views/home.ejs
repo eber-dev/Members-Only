@@ -1,0 +1,48 @@
+<%- include('partials/head', { title: 'Inicio' }) %>
+<%- include('partials/nav') %>
+
+<div class="home-container">
+    <% if (currentUser) { %>
+    <div class="welcome-card">
+        <h1>
+            ¡Hola,
+            <%= currentUser.first_name %>! 👋
+        </h1>
+        <p>
+            <% if (currentUser.is_admin) { %>
+            <span class="badge badge-admin">Admin</span>
+            <% } %>
+            <% if (currentUser.is_member) { %>
+            <span class="badge badge-member">Member</span>
+            <% } %>
+            <% if (!currentUser.is_admin && !currentUser.is_member) { %>
+            <span class="badge badge-guest">Guest</span>
+            <% } %>
+        </p>
+        <p style="margin-top: 1rem">
+            Este es tu panel. Aquí verías los mensajes secretos del club 🔒
+        </p>
+    </div>
+    <% } else { %>
+    <div class="welcome-card">
+        <h1>Bienvenido a Members Only 🔒</h1>
+        <p>Inicia sesión o regístrate para ver el contenido exclusivo.</p>
+    </div>
+    <% } %>
+
+    <div class="info-box">
+        <strong>🔍 Debug info (borra esto después):</strong><br />
+        ¿Estás logueado?
+        <%= currentUser ? 'Sí ✅' : 'No ❌' %><br />
+        <% if (currentUser) { %>
+        Tu ID:
+        <%= currentUser.id %><br />
+        Tu usuario:
+        <%= currentUser.username %><br />
+        Admin:
+        <%= currentUser.is_admin ? 'Sí' : 'No' %>
+        <% } %>
+    </div>
+</div>
+
+<%- include('partials/footer') %>
