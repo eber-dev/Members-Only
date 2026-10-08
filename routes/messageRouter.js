@@ -6,7 +6,7 @@ import {
     insertMessage,
     updateMessage,
     deleteMessage,
-} from '../controller/messageController';
+} from '../controller/messageController.js';
 
 import { validateId } from '../middleware/validarID.js';
 import { verificarMensaje } from '../middleware/obligatorio.js';

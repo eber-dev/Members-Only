@@ -1,5 +1,5 @@
-import { insertarMensaje } from '../model/messageModel';
-import { insertarUsuario } from '../model/userModel';
+import { insertarMensaje } from '../model/messageModel.js';
+import { insertarUsuario } from '../model/userModel.js';
 
 export function verificarMensaje() {
     return async (req, res, next) => {

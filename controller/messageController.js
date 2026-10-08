@@ -4,7 +4,7 @@ import {
     insertarMensaje,
     actualizarMensaje,
     eliminarMensaje,
-} from '../model/messageModel';
+} from '../model/messageModel.js';
 
 export async function getMessages(req, res) {
     try {

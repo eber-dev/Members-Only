@@ -12,6 +12,14 @@ export async function obtenerUsuariosporId(id) {
     return rows[0];
 }
 
+export async function obtenerUsuarioPorUsername(username) {
+    const { rows } = await pool.query(
+        'SELECT * FROM users WHERE username = $1;',
+        [username],
+    );
+    return rows[0];
+}
+
 export async function insertarUsuario(
     first_name,
     last_name,
@@ -34,10 +42,9 @@ export async function actualizarUsuario(
     password_hash,
 ) {
     const result = await pool.query(
-        'UPDATE users SET first_name = $1, last_name = $2, username = $3, pasword_hash = $4 WHERE id = $5 RETURNING *',
-        [id, first_name, last_name, username, password_hash],
+        'UPDATE users SET first_name = $1, last_name = $2, username = $3, password_hash = $4 WHERE id = $5 RETURNING *',
+        [first_name, last_name, username, password_hash, id],
     );
-
     return result.rows[0];
 }
 
